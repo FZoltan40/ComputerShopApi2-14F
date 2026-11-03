@@ -65,5 +65,25 @@ namespace ComputerShopApi.Controllers
 
             return StatusCode(400, new { message = "Hiba a felvételnél.", result = osystem });
         }
+
+        [HttpPut("update")]
+        public object UpdateOs([FromQuery] Guid id, [FromBody] UpdateOsystemDto updateOsystemDto)
+        {
+            var osystem = _context.Osystems.FirstOrDefault(o => o.Id == id);
+
+            if (osystem != null)
+            {
+                osystem.Name = updateOsystemDto.Name;
+                osystem.Version = updateOsystemDto.Version;
+                osystem.UpdateTime = DateTime.Now;
+
+                _context.Osystems.Update(osystem);
+                _context.SaveChanges();
+
+                return StatusCode(200, new { message = "Frissítve", result = osystem });
+            }
+
+            return StatusCode(400, new { message = "Hiba a frissítésnél.", result = osystem });
+        }
     }
 }
