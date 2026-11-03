@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "d3CxMfDAIs4=",
+  "dgSpecHash": "vK+JV/dDQcs=",
   "success": true,
-  "projectFilePath": "C:\\Users\\zoli\\Desktop\\Webshop\\ComputerShopApi\\ComputerShopApi.csproj",
+  "projectFilePath": "C:\\Users\\zoli\\Desktop\\CmpShopApi\\ComputerShopApi2-14F\\ComputerShopApi\\ComputerShopApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\zoli\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\zoli\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.20\\microsoft.aspnetcore.openapi.9.0.20.nupkg.sha512",

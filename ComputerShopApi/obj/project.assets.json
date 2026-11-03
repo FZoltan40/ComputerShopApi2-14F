@@ -3298,11 +3298,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\zoli\\Desktop\\Webshop\\ComputerShopApi\\ComputerShopApi.csproj",
+      "projectUniqueName": "C:\\Users\\zoli\\Desktop\\CmpShopApi\\ComputerShopApi2-14F\\ComputerShopApi\\ComputerShopApi.csproj",
       "projectName": "ComputerShopApi",
-      "projectPath": "C:\\Users\\zoli\\Desktop\\Webshop\\ComputerShopApi\\ComputerShopApi.csproj",
+      "projectPath": "C:\\Users\\zoli\\Desktop\\CmpShopApi\\ComputerShopApi2-14F\\ComputerShopApi\\ComputerShopApi.csproj",
       "packagesPath": "C:\\Users\\zoli\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\zoli\\Desktop\\Webshop\\ComputerShopApi\\obj\\",
+      "outputPath": "C:\\Users\\zoli\\Desktop\\CmpShopApi\\ComputerShopApi2-14F\\ComputerShopApi\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
