@@ -83,7 +83,23 @@ namespace ComputerShopApi.Controllers
                 return StatusCode(200, new { message = "Frissítve", result = osystem });
             }
 
-            return StatusCode(400, new { message = "Hiba a frissítésnél.", result = osystem });
+            return StatusCode(404, new { message = "Nincs ilyen Id", result = osystem });
+        }
+
+        [HttpDelete("delete")]
+        public object DeleteOs([FromQuery] Guid id)
+        {
+            var osystem = _context.Osystems.Find(id);
+
+            if (osystem != null)
+            {
+                _context.Osystems.Remove(osystem);
+                _context.SaveChanges();
+
+                return StatusCode(200, new { message = "Törölve", result = osystem });
+            }
+
+            return StatusCode(404, new { message = "nincs ilyen Id", result = osystem });
         }
     }
 }
