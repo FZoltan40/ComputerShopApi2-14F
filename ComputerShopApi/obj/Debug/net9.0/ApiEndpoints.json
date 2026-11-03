@@ -24,5 +24,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "ComputerShopApi.Controllers.OsystemController",
+    "Method": "NewOs",
+    "RelativePath": "osystems/newOs",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "newOsystemDto",
+        "Type": "ComputerShopApi.Models.DTOs.NewOsystemDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

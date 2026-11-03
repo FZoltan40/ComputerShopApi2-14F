@@ -1,4 +1,5 @@
 ﻿using ComputerShopApi.Models;
+using ComputerShopApi.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ComputerShopApi.Controllers
@@ -12,19 +13,19 @@ namespace ComputerShopApi.Controllers
         [HttpGet("all")]
         public object GetAll()
         {
-            var users = _context.Osystems.ToList();
+            var osystem = _context.Osystems.ToList();
 
-            if (users != null)
+            if (osystem != null)
             {
-                return StatusCode(200, new { message = "Sikeres lekérdezés", result = users });
+                return StatusCode(200, new { message = "Sikeres lekérdezés", result = osystem });
             }
-            else if (users.Count == 0)
+            else if (osystem.Count == 0)
             {
-                return StatusCode(404, new { message = "Üres adatbázis", result = users });
+                return StatusCode(404, new { message = "Üres adatbázis", result = osystem });
             }
             else
             {
-                return new { message = "Hiba a lekérdezésben", result = users };
+                return new { message = "Hiba a lekérdezésben", result = osystem };
             }
 
         }
@@ -32,14 +33,37 @@ namespace ComputerShopApi.Controllers
         [HttpGet("byId")]
         public object GetById([FromQuery] Guid id)
         {
-            var user = _context.Osystems.SingleOrDefault(o => o.Id == id);
+            var osystem = _context.Osystems.SingleOrDefault(o => o.Id == id);
 
-            if (user != null)
+            if (osystem != null)
             {
-                return StatusCode(200, new { message = "Sikeres lekérdezés", result = user });
+                return StatusCode(200, new { message = "Sikeres lekérdezés", result = osystem });
             }
 
-            return StatusCode(404, new { message = "Nincs ilyen Id", result = user });
+            return StatusCode(404, new { message = "Nincs ilyen Id", result = osystem });
+        }
+
+        [HttpPost("newOs")]
+        public object NewOs([FromBody] NewOsystemDto newOsystemDto)
+        {
+            var osystem = new Osystem
+            {
+                Id = Guid.NewGuid(),
+                Name = newOsystemDto.Name,
+                Version = newOsystemDto.Version,
+                RegisterTime = DateTime.Now,
+                UpdateTime = DateTime.Now
+            };
+
+            if (osystem != null)
+            {
+                _context.Osystems.Add(osystem);
+                _context.SaveChanges();
+
+                return StatusCode(201, new { message = "Hozzáadva.", result = osystem });
+            }
+
+            return StatusCode(400, new { message = "Hiba a felvételnél.", result = osystem });
         }
     }
 }
