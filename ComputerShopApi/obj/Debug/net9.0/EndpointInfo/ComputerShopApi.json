@@ -111,6 +111,62 @@
         }
       }
     },
+    "/computers/deleteComputer": {
+      "delete": {
+        "tags": [
+          "Computer"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/oscomp/allOsAndCopmuter": {
+      "get": {
+        "tags": [
+          "OsComp"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/oscomp/osByIdWithComputers": {
+      "get": {
+        "tags": [
+          "OsComp"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/osystems/all": {
       "get": {
         "tags": [
