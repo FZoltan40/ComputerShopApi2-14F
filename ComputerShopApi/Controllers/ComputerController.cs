@@ -99,7 +99,31 @@ namespace ComputerShopApi.Controllers
             {
                 return StatusCode(400, new { message = exception.Message });
             }
+        }
 
+        [HttpDelete("deleteComputer")]
+        public object DeleteComputer([FromQuery] Guid id)
+        {
+
+            try
+            {
+                var computer = _context.Computers.Find(id);
+
+                if (computer != null)
+                {
+                    _context.Computers.Remove(computer);
+                    _context.SaveChanges();
+
+                    return StatusCode(200, new { message = "Frissítve", result = computer });
+
+                }
+
+                return StatusCode(404, new { message = "nincs ilyen Id", result = computer });
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(400, new { message = exception.Message });
+            }
         }
     }
 }
