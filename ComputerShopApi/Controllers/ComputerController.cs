@@ -1,4 +1,5 @@
 ﻿using ComputerShopApi.Models;
+using ComputerShopApi.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ComputerShopApi.Controllers
@@ -38,7 +39,67 @@ namespace ComputerShopApi.Controllers
                 return Ok(new { message = "Sikeres lekérdezés", result = computer });
             }
 
-            return NotFound(new { message = "Sikeres lekérdezés", result = computer });
+            return NotFound(new { message = "Sikertelen lekérdezés", result = computer });
+        }
+
+        [HttpPost("newComputer")]
+        public object NewComputer([FromBody] NewComputerDto newComputerDto)
+        {
+            try
+            {
+                var computer = new Computer
+                {
+                    Id = Guid.NewGuid(),
+                    Brand = newComputerDto.Brand,
+                    Display = newComputerDto.Display,
+                    Memory = newComputerDto.Memory,
+                    CreatedTime = DateTime.Now,
+                    OsId = newComputerDto.OsId
+                };
+
+                if (computer != null)
+                {
+                    _context.Computers.Add(computer);
+                    _context.SaveChanges();
+
+                    return StatusCode(201, new { message = "Felvéve", result = computer });
+                }
+
+                return StatusCode(404, new { message = "Üres objektum", result = computer });
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(400, new { message = exception.Message });
+            }
+        }
+
+        [HttpPut("updateComputer")]
+        public object UpdateComputer([FromQuery] Guid id, [FromBody] UpdateComputerDto updateComputerDto)
+        {
+            try
+            {
+                var computer = _context.Computers.SingleOrDefault(c => c.Id == id);
+
+                if (computer != null)
+                {
+                    computer.Brand = updateComputerDto.Brand;
+                    computer.Display = updateComputerDto.Display;
+                    computer.Memory = updateComputerDto.Memory;
+                    computer.OsId = updateComputerDto.OsId;
+
+                    _context.Computers.Update(computer);
+                    _context.SaveChanges();
+
+                    return StatusCode(200, new { message = "Frissítve", result = computer });
+                }
+
+                return StatusCode(404, new { message = "nincs ilyen Id", result = computer });
+            }
+            catch (Exception exception)
+            {
+                return StatusCode(400, new { message = exception.Message });
+            }
+
         }
     }
 }

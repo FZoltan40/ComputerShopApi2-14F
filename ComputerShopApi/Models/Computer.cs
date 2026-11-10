@@ -13,7 +13,6 @@ namespace ComputerShopApi.Models
         [Column(TypeName = "varchar(37)")]
         public string Brand { get; set; }
 
-        [Column(TypeName = "double")]
         public float Display { get; set; }
 
         public int Memory { get; set; }
