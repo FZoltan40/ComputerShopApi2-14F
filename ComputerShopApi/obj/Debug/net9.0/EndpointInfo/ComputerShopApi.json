@@ -5,6 +5,18 @@
     "version": "1.0"
   },
   "paths": {
+    "/computers/allComputer": {
+      "get": {
+        "tags": [
+          "Computer"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
     "/osystems/all": {
       "get": {
         "tags": [

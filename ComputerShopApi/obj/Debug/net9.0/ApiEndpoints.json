@@ -1,5 +1,15 @@
 [
   {
+    "ContainingType": "ComputerShopApi.Controllers.ComputerController",
+    "Method": "AllComputer",
+    "RelativePath": "computers/allComputer",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "ComputerShopApi.Controllers.OsystemController",
     "Method": "GetAll",
     "RelativePath": "osystems/all",
